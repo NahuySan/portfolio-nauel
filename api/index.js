@@ -61,7 +61,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 
 // --- Server Start & Export ---
 
-// Esto es lo que corregimos: solo levanta el server si NO estás en Vercel
+// Esto es lo que corregimos: solo levanta el server si NO está en Vercel
 if (process.env.NODE_ENV !== 'production') {
   const PORT = process.env.PORT || 3001;
   app.listen(PORT, () => {

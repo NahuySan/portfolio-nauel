@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Mail, Github, Linkedin, Instagram, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { motion, AnimatePresence } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
 import { translations } from "../../data/translations";
 
@@ -87,9 +88,9 @@ export function Contact() {
             {/* Redes Sociales: Centradas en mobile (justify-center) */}
             <div className="flex justify-center lg:justify-start gap-4 pt-4 w-full">
               {[
-                { icon: <Github size={20} />, url: "https://github.com/NahuySan" },
-                { icon: <Linkedin size={20} />, url: "https://linkedin.com/in/nahuelsan" },
-                { icon: <Instagram size={20} />, url: "https://instagram.com/nahuelssanchez" }
+                { icon: <FaGithub size={20} />, url: "https://github.com/NahuySan" },
+                { icon: <FaLinkedin size={20} />, url: "https://linkedin.com/in/nahuelsan" },
+                { icon: <FaInstagram size={20} />, url: "https://instagram.com/nahuelssanchez" }
               ].map((social, idx) => (
                 <a
                   key={idx}

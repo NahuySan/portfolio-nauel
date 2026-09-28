@@ -1,5 +1,6 @@
-import { ExternalLink, Github, FolderCode, Camera } from "lucide-react";
-import { motion } from "framer-motion";
+import { ExternalLink, FolderCode, Camera } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+import { motion } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
 import { translations } from "../../data/translations";
 
@@ -119,7 +120,7 @@ export function Projects() {
                         rel="noopener noreferrer" 
                         className="flex items-center gap-2 text-xs font-bold hover:text-primary transition-colors"
                       >
-                        <Github size={14} /> {t.repo}
+                        <FaGithub size={14} /> {t.repo}
                       </a>
                     )}
                   </div>

@@ -1,4 +1,4 @@
-import { motion, type Variants } from "framer-motion";
+import { motion, type Variants } from "motion/react";
 import { ArrowDown } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { translations } from "../../data/translations";

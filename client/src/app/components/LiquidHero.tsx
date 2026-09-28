@@ -3,7 +3,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { ArrowDown } from "lucide-react";
-import { motion, type Variants } from "framer-motion"; 
+import { motion, type Variants } from "motion/react"; 
 import { useLanguage } from "../context/LanguageContext";
 import { translations } from "../../data/translations";
 

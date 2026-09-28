@@ -1,4 +1,5 @@
-import { Github, Linkedin, Instagram, ArrowUp } from "lucide-react";
+import { ArrowUp } from "lucide-react";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { useLanguage } from "../context/LanguageContext";
 import { translations } from "../../data/translations";
 
@@ -42,7 +43,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary hover:scale-110 transition-all duration-300"
               >
-                <Github size={20} />
+                <FaGithub size={20} />
               </a>
               <a 
                 href="https://linkedin.com/in/nahuelsan" 
@@ -50,7 +51,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary hover:scale-110 transition-all duration-300"
               >
-                <Linkedin size={20} />
+                <FaLinkedin size={20} />
               </a>
               <a 
                 href="https://instagram.com/nahuelssanchez" 
@@ -58,7 +59,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary hover:scale-110 transition-all duration-300"
               >
-                <Instagram size={20} />
+                <FaInstagram size={20} />
               </a>
             </div>
           </div>
@@ -88,7 +89,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="hover:text-primary transition-all flex items-center gap-2 border border-border/50 px-3 py-1 rounded-full hover:border-primary/50"
             >
-              <Github size={10} />
+              <FaGithub size={10} />
               {lang === 'es' ? 'Código Fuente' : 'Source Code'}
             </a>
 

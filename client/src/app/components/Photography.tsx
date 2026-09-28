@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { X, ZoomIn } from "lucide-react";
-import { motion, AnimatePresence, type Variants } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
 import { translations } from "../../data/translations";
 import photoData from "../../data/photos.json";

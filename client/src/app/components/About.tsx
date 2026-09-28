@@ -1,7 +1,7 @@
 import { Code2, Camera, Cpu } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { translations } from "../../data/translations";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 export function About() {
   const { lang } = useLanguage();
