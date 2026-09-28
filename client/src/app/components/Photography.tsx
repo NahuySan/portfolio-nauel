@@ -78,14 +78,9 @@ export function Photography() {
       className="relative w-full overflow-hidden bg-background h-auto md:min-h-[180vh] py-10 md:py-20"
       onClick={() => setActiveCard(null)}
     >
-      {/* 1. BACKGROUND CON MÁSCARA (Seamless) */}
-      <motion.div 
+      {/* 1. BACKGROUND CON MÁSCARA (Seamless) optimizado para performance */}
+      <div 
         className="absolute inset-0 z-0"
-        animate={{ 
-          filter: (activeCard || selectedCategory) ? "blur(15px) brightness(0.25)" : "blur(0px) brightness(0.45)",
-        }}
-        transition={{ duration: 1 }}
-        // La imagen se desvanece por máscara, no por overlay de color.
         style={{
           WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 25%, black 75%, transparent)',
           maskImage: 'linear-gradient(to bottom, transparent, black 25%, black 75%, transparent)',
@@ -95,8 +90,18 @@ export function Photography() {
           src="/photography/Paisaje/10.webp" 
           alt="Background"
           className="w-full h-full object-cover object-bottom opacity-40" 
+          style={{ filter: "brightness(0.45)" }}
         />
-      </motion.div>
+        
+        {/* Overlay animado por opacidad en lugar de animar el filtro entero */}
+        <motion.div
+          className="absolute inset-0 bg-background/40 backdrop-blur-xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: (activeCard || selectedCategory) ? 1 : 0 }}
+          transition={{ duration: 0.8 }}
+          style={{ willChange: "opacity" }}
+        />
+      </div>
 
       {/* 2. CONTENIDO PRINCIPAL */}
       <div className="relative z-10 flex flex-col items-center justify-start px-6 pt-20 md:pt-45"> 
@@ -151,8 +156,8 @@ export function Photography() {
                   }
                 }}
               >
-                <div className={`relative bg-muted/20 backdrop-blur-xl p-2 rounded-2xl border transition-all duration-500
-                  ${isActive ? 'border-primary/60 shadow-[0_0_50px_rgba(var(--primary),0.3)]' : 'border-white/10 shadow-2xl'}
+                <div className={`relative bg-black/40 p-2 rounded-2xl border transition-colors duration-500
+                  ${isActive ? 'border-primary/60 shadow-[0_0_40px_rgba(var(--primary),0.3)]' : 'border-white/10 shadow-xl'}
                 `}>
                   <div className="relative aspect-video md:aspect-3/4 overflow-hidden rounded-xl">
                     <ImageWithFallback src={photo.webp} alt={photo.category} className="w-full h-full object-cover" />
@@ -186,7 +191,7 @@ export function Photography() {
         {selectedCategory && (
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-background/98 backdrop-blur-2xl flex items-center justify-center p-4 md:p-10"
+            className="fixed inset-0 z-[100] bg-background flex items-center justify-center p-4 md:p-10"
             onClick={() => setSelectedCategory(null)}
           >
             <div className="w-full max-w-7xl h-full flex flex-col" onClick={(e) => e.stopPropagation()}>
@@ -204,9 +209,9 @@ export function Photography() {
   {shuffledCategoryPhotos.map((photo, i) => (
     <motion.div
       key={`${photo.webp}-${i}`}
-      initial={{ opacity: 0, scale: 0.9 }} 
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: i * 0.02 }}
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }}
+      transition={{ delay: i * 0.02, duration: 0.3 }}
       // 2. Reforzamos las proporciones para que encajen milimétricamente
       className={`relative overflow-hidden rounded-2xl bg-muted/20 border border-white/5 group cursor-zoom-in 
         ${photo.orientation === 'portrait' 
@@ -220,6 +225,7 @@ export function Photography() {
         src={photo.webp} 
         alt={`${selectedCategory} - ${i}`} 
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+        loading="lazy"
       />
       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
         <ZoomIn className="text-white opacity-60" size={40} />
